@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:id="@+id/peripheral_list_characteristic_name"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="7dp"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:text="Device Name" />
+
+    <TextView
+        android:id="@+id/peripheral_list_characteristic_uuid"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/peripheral_list_characteristic_name"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="5dp"
+        android:textColor="@color/very_dark_gray"
+        android:textSize="16sp"
+        android:text="00001800-0000-1000-8000-00805f9b34fb" />
+    
+    <ImageView 
+        android:id="@+id/read_enabled_image"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="9dp"
+        android:src="@drawable/read"/>
+    
+    <ImageView 
+        android:id="@+id/write_enabled_image"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_toLeftOf="@id/read_enabled_image"
+        android:layout_alignWithParentIfMissing="true"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="9dp"
+        android:src="@drawable/write"/>
+    
+    <ImageView 
+        android:id="@+id/notify_enabled_image"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_toLeftOf="@id/write_enabled_image"
+        android:layout_alignWithParentIfMissing="true"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="9dp"
+        android:src="@drawable/notify"/>
+
+</RelativeLayout>

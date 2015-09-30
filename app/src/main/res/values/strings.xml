@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Bluetooth Low Energy Sample</string>
+    <!-- Buttons -->
+    <string name="scan">Scan</string>
+    <string name="clear">Clear</string>
+    <string name="connect">Connect</string>
+    <string name="disconnect">Disconnect</string>
+    <string name="write">Write</string>
+    <string name="read">Read</string>
+    <string name="turn_on_notification">Turn On Notifications</string>
+    <string name="turn_off_notification">Turn Off Notifications</string>
+    <string name="back">&lt; Back to Devices Selection</string>
+    <!-- Titles -->
+    <string name="title_ble_devices">Bluetooth Low Energy Devices</string>
+    <string name="title_characteristic_details">Characteristic details:</string>
+    <!-- Status -->
+    <string name="status_connected">Connected</string>
+    <string name="status_connecting">Connecting&#8230;</string>
+    <string name="status_disconnected">Disconnected</string>
+    <!-- Parameters -->
+    <string name="service">Service: </string>
+    <string name="service_uuid">Service UUID: </string>
+    <string name="properties">Properties: </string>
+    <string name="data_type">Data Type: </string>
+    <string name="last_updated">Last Updated: </string>
+    <string name="value">Value: </string>
+    <string name="string_value">String Value: </string>
+    <string name="decimal_value">Decimal Value: </string>
+    <!-- Suffixs -->
+    <string name="db_suffix"> db</string>
+    <string name="services_suffix">\'s services:</string>
+    <string name="characteristics_suffix">\'s characteristics:</string>
+    <!-- Dialog titles -->
+    <string name="scan_dialog_title">Scanning&#8230;</string>
+    <string name="connect_dialog_title">Connecting&#8230;</string>
+    <string name="discover_serviecs_dialog_title">Discovering services&#8230;</string>
+    <string name="reading_dialog_title">Reading characteristic value&#8230;</string>
+    <string name="writing_dialog_title">Writing characteristic value&#8230;</string>
+    <string name="notifications_dialog_title">Updating notifications status&#8230;</string>
+    <!-- Dialog texts -->
+    <string name="scan_dialog_text">Scanning for remote BLE devices, please wait.</string>
+    <string name="connect_dialog_text">Establishing connection with BLE device, please wait.</string>
+    <string name="discover_serviecs_dialog_text">Discovering available services in the remote device, please wait.</string>
+    <string name="reading_dialog_text">Reading characteristic value, please wait.</string>
+    <string name="writing_dialog_text">Writing characteristic value, please wait.</string>
+    <string name="notifications_dialog_text">Updating characteristic notifications status, please wait.</string>
+</resources>

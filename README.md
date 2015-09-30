@@ -10,6 +10,7 @@ Demo requirements
 -----------------
 
 To run this example you need:
+
 * One compatible device to host the application.
 * Network connection between the device and the host PC in order to transfer
   and launch the application.
@@ -21,6 +22,7 @@ Demo setup
 ----------
 
 Make sure the hardware is set up correctly:
+
 1. The device is powered on.
 2. The remote Bluetooth Low Energy device is powered on and in range.
 3. The device is connected directly to the PC or to the Local 

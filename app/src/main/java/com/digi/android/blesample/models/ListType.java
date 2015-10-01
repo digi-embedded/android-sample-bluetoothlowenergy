@@ -1,4 +1,4 @@
-package com.example.android.blesample.models;
+package com.digi.android.blesample.models;
 
 /**
  * Enumeration class defining the different types of the main list contents.

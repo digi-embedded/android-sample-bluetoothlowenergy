@@ -9,7 +9,7 @@
 * Digi International Inc. 11001 Bren Road East, Minnetonka, MN 55343
 * =======================================================================
 */
-package com.example.android.blesample;
+package com.digi.android.blesample;
 
 import com.digi.android.ble.BLEManager;
 

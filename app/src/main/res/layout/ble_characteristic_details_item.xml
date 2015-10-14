@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/peripheral_details_characteristic_item"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent" >
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
 
     <TextView
         android:id="@+id/char_details_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"
         android:textColor="@color/very_dark_gray"
         android:textStyle="bold"
         android:textSize="30sp" />
@@ -18,17 +18,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/char_details_name"
-        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"
         android:textColor="@color/very_dark_gray"
         android:textSize="20sp" />
     
     <View 
         android:id="@+id/horizontal_separator"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_below="@id/char_details_uuid"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
         android:layout_marginBottom="5dp"
         android:layout_marginTop="5dp"
         android:background="@color/very_dark_gray"/>
@@ -38,7 +38,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/horizontal_separator"
-        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"
         android:text="@string/service"
         android:textColor="@color/very_dark_gray"
         android:textSize="18sp"
@@ -49,8 +49,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/horizontal_separator"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="15dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="15dp"
         android:textColor="@color/dark_gray"
         android:textSize="18sp" />
     
@@ -59,7 +59,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/char_details_service"
-        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"
         android:text="@string/service_uuid"
         android:textColor="@color/very_dark_gray"
         android:textSize="18sp"
@@ -70,8 +70,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/char_details_service"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="15dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="15dp"
         android:textColor="@color/dark_gray"
         android:textSize="18sp" />
     
@@ -80,7 +80,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/char_details_service_uuid"
-        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"
         android:text="@string/data_type"
         android:textColor="@color/very_dark_gray"
         android:textSize="18sp"
@@ -91,8 +91,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/char_details_service_uuid"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="15dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="15dp"
         android:textColor="@color/dark_gray"
         android:textSize="18sp" />
     
@@ -101,7 +101,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/char_details_type"
-        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"
         android:text="@string/properties"
         android:textColor="@color/very_dark_gray"
         android:textSize="18sp"
@@ -112,8 +112,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/char_details_type"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="15dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="15dp"
         android:textColor="@color/dark_gray"
         android:textSize="18sp" />
 
@@ -122,7 +122,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/char_details_properties"
-        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"
         android:text="@string/last_updated"
         android:textColor="@color/very_dark_gray"
         android:textSize="18sp"
@@ -133,18 +133,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/char_details_properties"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="15dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="15dp"
         android:textColor="@color/dark_gray"
         android:textSize="18sp" />
     
     <View 
         android:id="@+id/horizontal_separator_2"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_below="@id/char_details_timestamp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         android:background="@color/very_dark_gray"/>
@@ -154,23 +154,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/horizontal_separator_2"
-        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="5dp"
         android:text="@string/value"
         android:textColor="@color/very_dark_gray"
         android:textSize="24sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:labelFor="@+id/char_details_hex_value"/>
     
     <EditText
         android:id="@+id/char_details_hex_value"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/horizontal_separator_2"
-        android:layout_toRightOf="@+id/value_label"
-        android:layout_marginRight="15dp"
+        android:layout_toEndOf="@+id/value_label"
+        android:layout_marginEnd="15dp"
         android:singleLine="true"
         android:ems="10"
-        android:textSize="24sp" >
+        android:textSize="24sp"
+        android:inputType="text">
 
         <requestFocus />
     </EditText>
@@ -180,7 +182,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/char_details_hex_value"
-        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="5dp"
         android:text="@string/string_value"
         android:textColor="@color/very_dark_gray"
@@ -192,8 +194,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/char_details_hex_value"
-        android:layout_toRightOf="@+id/value_decimal_label"
-        android:layout_marginLeft="5dp"
+        android:layout_toEndOf="@+id/value_decimal_label"
+        android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:textColor="@color/dark_gray"
         android:textSize="18sp"
@@ -204,7 +206,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/char_details_value_string"
-        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"
         android:text="@string/decimal_value"
         android:textColor="@color/very_dark_gray"
         android:textSize="18sp"
@@ -215,8 +217,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/char_details_value_string"
-        android:layout_toRightOf="@id/value_decimal_label"
-        android:layout_marginLeft="5dp"
+        android:layout_toEndOf="@id/value_decimal_label"
+        android:layout_marginStart="5dp"
         android:textColor="@color/dark_gray"
         android:textSize="18sp"
         android:textStyle="italic" />
@@ -226,8 +228,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="15dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="15dp"
         android:layout_marginBottom="10dp"
         android:layout_below="@id/char_details_value_decimal"
         android:paddingLeft="12dp"
@@ -243,10 +245,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
         android:layout_below="@id/char_details_value_decimal"
-        android:layout_toRightOf="@id/char_details_notification_switcher"
+        android:layout_toEndOf="@id/char_details_notification_switcher"
         android:paddingLeft="12dp"
         android:paddingRight="12dp"
         android:text="@string/read"
@@ -259,10 +261,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
         android:layout_below="@id/char_details_value_decimal"
-        android:layout_toRightOf="@id/char_details_read_btn"
+        android:layout_toEndOf="@id/char_details_read_btn"
         android:paddingLeft="12dp"
         android:paddingRight="12dp"
         android:text="@string/write"

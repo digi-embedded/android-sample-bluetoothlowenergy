@@ -1,14 +1,15 @@
 /**
-* Copyright (c) 2014 Digi International Inc.,
-* All rights not expressly granted are reserved.
-*
-* This Source Code Form is subject to the terms of the Mozilla Public
-* License, v. 2.0. If a copy of the MPL was not distributed with this file,
-* You can obtain one at http://mozilla.org/MPL/2.0/.
-*
-* Digi International Inc. 11001 Bren Road East, Minnetonka, MN 55343
-* =======================================================================
-*/
+ * Copyright (c) 2014-2015 Digi International Inc.,
+ * All rights not expressly granted are reserved.
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this file,
+ * You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+ * Digi International Inc. 11001 Bren Road East, Minnetonka, MN 55343
+ * =======================================================================
+ */
+
 package com.digi.android.blesample.adapters;
 
 import java.util.ArrayList;
@@ -46,43 +47,16 @@ public class BleCharacteristicsListAdapter extends BaseAdapter {
 		layoutInflater = parent.getLayoutInflater();
 	}
 
-	/**
-	 * Adds the given BLE Characteristic to the list of characteristics.
-	 * 
-	 * @param characteristic BLE Characteristic to add to the list.
-	 */
-	public void addCharacteristic(BluetoothGattCharacteristic characteristic) {
-		if (!bleCharacteristics.contains(characteristic))
-			bleCharacteristics.add(characteristic);
-	}
-
-	/**
-	 * Returns the characteristic at the given position from the list.
-	 * 
-	 * @param position Position of the characteristic in the list to retrieve.
-	 * @return The characteristic at the given position.
-	 */
-	public BluetoothGattCharacteristic getCharacteristic(int index) {
-		return bleCharacteristics.get(index);
-	}
-
-	/**
-	 * Clears the BLE Characteristics list.
-	 */
-	public void clearList() {
-		bleCharacteristics.clear();
-	}
-
 	@Override
 	public long getItemId(int position) {
 		return position;
 	}
-	
+
 	@Override
 	public Object getItem(int position) {
 		return getCharacteristic(position);
 	}
-	
+
 	@Override
 	public int getCount() {
 		return bleCharacteristics.size();
@@ -126,5 +100,32 @@ public class BleCharacteristicsListAdapter extends BaseAdapter {
 			notifyImage.setVisibility(View.GONE);
 		// Return modified view.
 		return convertView;
+	}
+
+	/**
+	 * Adds the given BLE Characteristic to the list of characteristics.
+	 * 
+	 * @param characteristic BLE Characteristic to add to the list.
+	 */
+	public void addCharacteristic(BluetoothGattCharacteristic characteristic) {
+		if (!bleCharacteristics.contains(characteristic))
+			bleCharacteristics.add(characteristic);
+	}
+
+	/**
+	 * Returns the characteristic at the given position from the list.
+	 * 
+	 * @param index Position of the characteristic in the list to retrieve.
+	 * @return The characteristic at the given position.
+	 */
+	public BluetoothGattCharacteristic getCharacteristic(int index) {
+		return bleCharacteristics.get(index);
+	}
+
+	/**
+	 * Clears the BLE Characteristics list.
+	 */
+	public void clearList() {
+		bleCharacteristics.clear();
 	}
 }

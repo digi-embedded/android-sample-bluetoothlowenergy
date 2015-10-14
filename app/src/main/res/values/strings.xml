@@ -27,22 +27,30 @@
     <string name="value">Value: </string>
     <string name="string_value">String Value: </string>
     <string name="decimal_value">Decimal Value: </string>
-    <!-- Suffixs -->
+    <!-- Suffixes -->
     <string name="db_suffix"> db</string>
     <string name="services_suffix">\'s services:</string>
     <string name="characteristics_suffix">\'s characteristics:</string>
     <!-- Dialog titles -->
     <string name="scan_dialog_title">Scanning&#8230;</string>
     <string name="connect_dialog_title">Connecting&#8230;</string>
-    <string name="discover_serviecs_dialog_title">Discovering services&#8230;</string>
+    <string name="discover_services_dialog_title">Discovering services&#8230;</string>
     <string name="reading_dialog_title">Reading characteristic value&#8230;</string>
     <string name="writing_dialog_title">Writing characteristic value&#8230;</string>
     <string name="notifications_dialog_title">Updating notifications status&#8230;</string>
     <!-- Dialog texts -->
     <string name="scan_dialog_text">Scanning for remote BLE devices, please wait.</string>
     <string name="connect_dialog_text">Establishing connection with BLE device, please wait.</string>
-    <string name="discover_serviecs_dialog_text">Discovering available services in the remote device, please wait.</string>
+    <string name="discover_services_dialog_text">Discovering available services in the remote device, please wait.</string>
     <string name="reading_dialog_text">Reading characteristic value, please wait.</string>
     <string name="writing_dialog_text">Writing characteristic value, please wait.</string>
     <string name="notifications_dialog_text">Updating characteristic notifications status, please wait.</string>
+    <!-- Initial values -->
+    <string name="peripheral_name_init">Test Device</string>
+    <string name="peripheral_address_initial">00:11:22:33:44:55:66:77</string>
+    <string name="peripheral_rssi_initial">-48 db</string>
+    <string name="peripheral_uuid_initial">00001800-0000-1000-8000-00805f9b34fb</string>
+    <string name="service_name_initial">Test Service</string>
+    <string name="service_type_primary">Primary</string>
+    <string name="service_type_secondary">Secondary</string>
 </resources>

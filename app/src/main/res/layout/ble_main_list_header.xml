@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
     android:layout_height="55dp"
     android:background="@color/very_dark_gray"
     android:orientation="horizontal" >
@@ -11,17 +12,18 @@
         android:layout_height="25dp"
         android:layout_gravity="center_vertical"
         android:layout_marginBottom="5dp"
-        android:layout_marginLeft="7dp"
+        android:layout_marginStart="7dp"
         android:layout_marginTop="5dp"
         android:src="@drawable/back"
-        android:visibility="gone" />
+        android:visibility="gone"
+        tools:ignore="ContentDescription"/>
 
     <TextView
         android:id="@+id/peripheral_list_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:textColor="@color/light_gray"
         android:textSize="28sp" />
 

@@ -7,50 +7,52 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".PeripheralActivity"
-    android:orientation="horizontal" >
+    android:orientation="horizontal"
+    android:baselineAligned="false">
     
     <RelativeLayout
         android:layout_width="0px"
-        android:layout_height="fill_parent"
+        android:layout_height="match_parent"
         android:layout_weight="40" >
 
         <TextView
             android:id="@+id/peripheral_name"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:textSize="45sp"
             android:textStyle="bold"
-            android:text="Test Device" />
+            android:text="@string/peripheral_name_init" />
 
         <TextView
             android:id="@+id/peripheral_address"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/peripheral_name"
             android:textSize="25sp"
-            android:text="00:11:22:33:44:55:66:77" />
+            android:text="@string/peripheral_address_initial" />
         
         <ImageView
             android:id="@+id/rssi_image"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_alignParentLeft="true"
-            android:layout_marginRight="5dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginEnd="5dp"
             android:layout_below="@id/peripheral_address"
-            android:src="@drawable/rssi_3" />
+            android:src="@drawable/rssi_3"
+            tools:ignore="ContentDescription"/>
         
         <TextView
             android:id="@+id/peripheral_rssi"
             android:layout_width="wrap_content"
             android:layout_height="100dp"
             android:layout_below="@id/peripheral_address"
-            android:layout_marginLeft="20dp"
-            android:layout_toRightOf="@id/rssi_image"
+            android:layout_marginStart="20dp"
+            android:layout_toEndOf="@id/rssi_image"
             android:gravity="center"
             android:textSize="35sp"
-            android:text="-48 db" />
+            android:text="@string/peripheral_rssi_initial" />
         
         <View
             android:id="@+id/horizontal_separator"
@@ -64,9 +66,9 @@
             android:id="@+id/connect_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
+            android:layout_marginEnd="10dp"
             android:layout_marginTop="5dp"
-            android:layout_toLeftOf="@+id/disconnect_button"
+            android:layout_toStartOf="@+id/disconnect_button"
             android:layout_below="@id/horizontal_separator"
             android:background="@drawable/button"
             android:paddingLeft="12dp"
@@ -79,7 +81,7 @@
             android:id="@id/disconnect_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:layout_below="@id/horizontal_separator"
             android:layout_marginTop="5dp"
             android:background="@drawable/button_red"
@@ -95,7 +97,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
             android:background="@drawable/button"
             android:paddingLeft="12dp"
             android:paddingRight="12dp"
@@ -106,14 +108,14 @@
 
     <RelativeLayout 
         android:layout_width="0px"
-        android:layout_height="fill_parent"
+        android:layout_height="match_parent"
         android:layout_weight="60">
         
         <ListView
             android:id="@+id/listView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             android:background="#eee"
             android:padding="2dp" >
         </ListView>

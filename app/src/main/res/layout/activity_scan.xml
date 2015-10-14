@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:text="@string/title_ble_devices"
         android:textColor="@color/dark_gray"
         android:padding="0px"
@@ -25,9 +25,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/button"
-        android:layout_toLeftOf="@+id/clear_button"
+        android:layout_toStartOf="@+id/clear_button"
         android:layout_marginTop="5dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginEnd="10dp"
         android:paddingLeft="12dp"
         android:paddingRight="12dp"
         android:text="@string/scan"
@@ -39,7 +39,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/button_red"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_marginTop="5dp"
         android:paddingLeft="12dp"
         android:paddingRight="12dp"
@@ -57,8 +57,8 @@
     
     <ListView
         android:id="@+id/ble_devices_list"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_below="@id/horizontal_separator"
         android:layout_marginTop="10dp" />
 

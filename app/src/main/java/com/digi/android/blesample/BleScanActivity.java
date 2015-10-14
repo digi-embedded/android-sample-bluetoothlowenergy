@@ -1,14 +1,15 @@
 /**
-* Copyright (c) 2014 Digi International Inc.,
-* All rights not expressly granted are reserved.
-*
-* This Source Code Form is subject to the terms of the Mozilla Public
-* License, v. 2.0. If a copy of the MPL was not distributed with this file,
-* You can obtain one at http://mozilla.org/MPL/2.0/.
-*
-* Digi International Inc. 11001 Bren Road East, Minnetonka, MN 55343
-* =======================================================================
-*/
+ * Copyright (c) 2014-2015 Digi International Inc.,
+ * All rights not expressly granted are reserved.
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this file,
+ * You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+ * Digi International Inc. 11001 Bren Road East, Minnetonka, MN 55343
+ * =======================================================================
+ */
+
 package com.digi.android.blesample;
 
 import com.digi.android.ble.BLEManager;
@@ -44,8 +45,7 @@ public class BleScanActivity extends Activity implements BLEDeviceScanListener {
 	private ProgressDialog progressDialog;
 	
 	private Button scanButton;
-	private Button clearButton;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -75,7 +75,22 @@ public class BleScanActivity extends Activity implements BLEDeviceScanListener {
 		stopScanning();
 		// Clear devices list.
 		devicesListAdapter.clearList();
-	};
+	}
+
+	@Override
+	public void deviceScanStarted() {
+		showScanProgressDialog();
+	}
+
+	@Override
+	public void deviceScanStopped() {
+		hideProgressgDialog();
+	}
+
+	@Override
+	public void deviceFound(final BluetoothDevice bleDevice, final int rssi, final byte[] scanRecords) {
+		addBLEDevice(bleDevice, rssi);
+	}
 	
 	/**
 	 * Initializes all the required UI Components with listeners.
@@ -84,17 +99,18 @@ public class BleScanActivity extends Activity implements BLEDeviceScanListener {
 		bleDevicesList = (ListView)findViewById(R.id.ble_devices_list);
 		bleDevicesList.setOnItemClickListener(new OnItemClickListener() {
 			@Override
-			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+			public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 				// Retrieve selected device.
-				final BluetoothDevice device = devicesListAdapter.getDevice(arg2);
+				final BluetoothDevice device = devicesListAdapter.getDevice(i);
 				if (device == null)
 					return;
 				// Stop scanning.
 				stopScanning();
 				// Start peripheral activity.
-				startPeripheralActivity(device, devicesListAdapter.getRssi(arg2));
+				startPeripheralActivity(device, devicesListAdapter.getRssi(i));
 			}
 		});
+
 		// Buttons.
 		scanButton = (Button)findViewById(R.id.scan_button);
 		scanButton.setOnClickListener(new OnClickListener() {
@@ -103,7 +119,7 @@ public class BleScanActivity extends Activity implements BLEDeviceScanListener {
 				startScanning();
 			}
 		});
-		clearButton = (Button)findViewById(R.id.clear_button);
+		Button clearButton = (Button) findViewById(R.id.clear_button);
 		clearButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -160,9 +176,6 @@ public class BleScanActivity extends Activity implements BLEDeviceScanListener {
 
 	/**
 	 * Shows a progress dialog with the given parameters.
-	 * 
-	 * @param title Progress dialog title.
-	 * @param message Progress dialog message.
 	 */
 	private void showScanProgressDialog() {
 		// We are working with UI so run on UI thread.
@@ -210,20 +223,5 @@ public class BleScanActivity extends Activity implements BLEDeviceScanListener {
 				devicesListAdapter.notifyDataSetChanged();
 			}
 		});
-	}
-	
-	@Override
-	public void deviceScanStarted() {
-		showScanProgressDialog();
-	}
-
-	@Override
-	public void deviceScanStopped() {
-		hideProgressgDialog();
-	}
-
-	@Override
-	public void deviceFound(final BluetoothDevice bleDevice, final int rssi, final byte[] scanRecords) {
-		addBLEDevice(bleDevice, rssi);
 	}
 }

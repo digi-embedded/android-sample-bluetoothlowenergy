@@ -1,14 +1,15 @@
 /**
-* Copyright (c) 2014 Digi International Inc.,
-* All rights not expressly granted are reserved.
-*
-* This Source Code Form is subject to the terms of the Mozilla Public
-* License, v. 2.0. If a copy of the MPL was not distributed with this file,
-* You can obtain one at http://mozilla.org/MPL/2.0/.
-*
-* Digi International Inc. 11001 Bren Road East, Minnetonka, MN 55343
-* =======================================================================
-*/
+ * Copyright (c) 2014-2015 Digi International Inc.,
+ * All rights not expressly granted are reserved.
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this file,
+ * You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+ * Digi International Inc. 11001 Bren Road East, Minnetonka, MN 55343
+ * =======================================================================
+ */
+
 package com.digi.android.blesample;
 
 import com.digi.android.ble.BLEManager;
@@ -53,7 +54,8 @@ public class BleSampleApplication extends Application {
 	 * Retrieves the image drawable corresponding to the given RSSI value.
 	 * 
 	 * @param rssi The image drawable corresponding to the given RSSI value.
-	 * @return
+	 *
+	 * @return An object that can be used to draw RSSI value.
 	 */
 	public Drawable getRSSIImage(int rssi) {
 		if (rssi < -90)

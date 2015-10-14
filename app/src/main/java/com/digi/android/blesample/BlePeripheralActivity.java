@@ -74,12 +74,9 @@ public class BlePeripheralActivity extends Activity implements BLERSSIUpdateList
 	
 	private Button connectButton;
 	private Button disconnectButton;
-	private Button backButton;
-	
+
 	private ListView mainList;
-	
-	private View listViewHeader;
-	
+
 	private BleServicesListAdapter servicesListAdapter;
 	
 	private BleCharacteristicsListAdapter characteristicsListAdapter;
@@ -127,7 +124,7 @@ public class BlePeripheralActivity extends Activity implements BLERSSIUpdateList
 		// List.
 		mainList = (ListView) findViewById(R.id.listView);
 		mainList.setOnItemClickListener(listClickListener);
-		listViewHeader = (View) getLayoutInflater().inflate(R.layout.ble_main_list_header, null, false);
+		View listViewHeader = getLayoutInflater().inflate(R.layout.ble_main_list_header, null, false);
 		mainList.addHeaderView(listViewHeader);
 		// List elements.
 		headerTitleText = (TextView) listViewHeader.findViewById(R.id.peripheral_list_title);
@@ -149,7 +146,7 @@ public class BlePeripheralActivity extends Activity implements BLERSSIUpdateList
 				disconnect();
 			}
 		});
-		backButton = (Button) findViewById(R.id.back_button);
+		Button backButton = (Button) findViewById(R.id.back_button);
 		backButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -220,7 +217,7 @@ public class BlePeripheralActivity extends Activity implements BLERSSIUpdateList
 				connect();
 			}
 		});
-	};
+	}
 
 	@Override
 	protected void onPause() {
@@ -237,7 +234,7 @@ public class BlePeripheralActivity extends Activity implements BLERSSIUpdateList
 				close();
 			}
 		});
-	};
+	}
 
 	/**
 	 * Connects to the remote BLE Device.
@@ -313,7 +310,8 @@ public class BlePeripheralActivity extends Activity implements BLERSSIUpdateList
 				// Change main list type to services.
 				switchListType(ListType.GATT_SERVICES);
 				// Update header title.
-				headerTitleText.setText(bleDevice.getName() + getResources().getString(R.string.services_suffix));
+				headerTitleText.setText(String.format("%s" +getResources().getString(R.string.services_suffix),
+						bleDevice.getName()));
 				// Read services from connected device.
 				List<BluetoothGattService> services = connection.getSupportedServices();
 				for (BluetoothGattService service:services)
@@ -337,7 +335,9 @@ public class BlePeripheralActivity extends Activity implements BLERSSIUpdateList
 				// Change main list type to characteristics.
 				switchListType(ListType.GATT_CHARACTERISTICS);
 				// Update header title.
-				headerTitleText.setText(BLEUtils.getServiceName(service) + getResources().getString(R.string.characteristics_suffix));
+				headerTitleText.setText(
+						String.format("%s" + getResources().getString(R.string.characteristics_suffix),
+								BLEUtils.getServiceName(service)));
 				// Read characteristics from service.
 				List<BluetoothGattCharacteristic> characteristics = service.getCharacteristics();
 				// Add the characteristics to the adapter.
@@ -382,7 +382,7 @@ public class BlePeripheralActivity extends Activity implements BLERSSIUpdateList
 			@Override
 			public void run() {
 				bleDeviceRSSI = rssi;
-				deviceRssiText.setText(bleDeviceRSSI + getResources().getString(R.string.db_suffix));
+				deviceRssiText.setText(String.format("%d" + getResources().getString(R.string.db_suffix), bleDeviceRSSI));
 				rssiImage.setImageDrawable(BleSampleApplication.getInstance().getRSSIImage(rssi));
 			}
 		});
@@ -434,7 +434,7 @@ public class BlePeripheralActivity extends Activity implements BLERSSIUpdateList
 		runOnUiThread(new Runnable() {
 			@Override
 			public void run() {
-				showProgressDialog(getResources().getString(R.string.discover_serviecs_dialog_title), getResources().getString(R.string.discover_serviecs_dialog_text));
+				showProgressDialog(getResources().getString(R.string.discover_services_dialog_title), getResources().getString(R.string.discover_services_dialog_text));
 			}
 		});
 	}

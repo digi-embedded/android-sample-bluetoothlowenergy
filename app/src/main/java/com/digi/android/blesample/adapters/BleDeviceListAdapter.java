@@ -1,14 +1,15 @@
 /**
-* Copyright (c) 2014 Digi International Inc.,
-* All rights not expressly granted are reserved.
-*
-* This Source Code Form is subject to the terms of the Mozilla Public
-* License, v. 2.0. If a copy of the MPL was not distributed with this file,
-* You can obtain one at http://mozilla.org/MPL/2.0/.
-*
-* Digi International Inc. 11001 Bren Road East, Minnetonka, MN 55343
-* =======================================================================
-*/
+ * Copyright (c) 2014-2015 Digi International Inc.,
+ * All rights not expressly granted are reserved.
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this file,
+ * You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+ * Digi International Inc. 11001 Bren Road East, Minnetonka, MN 55343
+ * =======================================================================
+ */
+
 package com.digi.android.blesample.adapters;
 
 import java.util.ArrayList;
@@ -47,50 +48,6 @@ public class BleDeviceListAdapter extends BaseAdapter {
 		bleDevices  = new ArrayList<BluetoothDevice>();
 		bleDevicesRssi = new ArrayList<Integer>();
 		layoutInflater = parentActivity.getLayoutInflater();
-	}
-
-	/**
-	 * Adds the given Bluetooth Low Energy device to the list of BLE devices.
-	 *  
-	 * @param device Device to add.
-	 * @param rssi RSSI reported by the device.
-	 */
-	public void addDevice(BluetoothDevice device, int rssi) {
-		if (!bleDevices.contains(device)) {
-			bleDevices.add(device);
-			bleDevicesRssi.add(rssi);
-		} else {
-			int position = bleDevices.indexOf(device);
-			bleDevicesRssi.set(position, rssi);
-		}
-	}
-
-	/**
-	 * Retrieves the device at the given position.
-	 * 
-	 * @param position Position of the device to retrieve.
-	 * @return BLE Device corresponding to the given position.
-	 */
-	public BluetoothDevice getDevice(int position) {
-		return bleDevices.get(position);
-	}
-
-	/**
-	 * Retrieves the RSSI value for the given device position.
-	 * 
-	 * @param position Position of the device to retrieve its RSSI value.
-	 * @return The RSSI value of the device.
-	 */
-	public int getRssi(int position) {
-		return bleDevicesRssi.get(position);
-	}
-
-	/**
-	 * Clears the devices list.
-	 */
-	public void clearList() {
-		bleDevices.clear();
-		bleDevicesRssi.clear();
 	}
 
 	@Override
@@ -138,10 +95,54 @@ public class BleDeviceListAdapter extends BaseAdapter {
 		// Fill address.
 		String address = device.getAddress();
 		deviceAddress.setText(address);
-		
+
 		// Fill RSSI image.
 		rssiImage.setImageDrawable(BleSampleApplication.getInstance().getRSSIImage(rssi));
-		
+
 		return convertView;
+	}
+
+	/**
+	 * Adds the given Bluetooth Low Energy device to the list of BLE devices.
+	 *  
+	 * @param device Device to add.
+	 * @param rssi RSSI reported by the device.
+	 */
+	public void addDevice(BluetoothDevice device, int rssi) {
+		if (!bleDevices.contains(device)) {
+			bleDevices.add(device);
+			bleDevicesRssi.add(rssi);
+		} else {
+			int position = bleDevices.indexOf(device);
+			bleDevicesRssi.set(position, rssi);
+		}
+	}
+
+	/**
+	 * Retrieves the device at the given position.
+	 * 
+	 * @param position Position of the device to retrieve.
+	 * @return BLE Device corresponding to the given position.
+	 */
+	public BluetoothDevice getDevice(int position) {
+		return bleDevices.get(position);
+	}
+
+	/**
+	 * Retrieves the RSSI value for the given device position.
+	 * 
+	 * @param position Position of the device to retrieve its RSSI value.
+	 * @return The RSSI value of the device.
+	 */
+	public int getRssi(int position) {
+		return bleDevicesRssi.get(position);
+	}
+
+	/**
+	 * Clears the devices list.
+	 */
+	public void clearList() {
+		bleDevices.clear();
+		bleDevicesRssi.clear();
 	}
 }

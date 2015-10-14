@@ -1,14 +1,15 @@
 /**
-* Copyright (c) 2014 Digi International Inc.,
-* All rights not expressly granted are reserved.
-*
-* This Source Code Form is subject to the terms of the Mozilla Public
-* License, v. 2.0. If a copy of the MPL was not distributed with this file,
-* You can obtain one at http://mozilla.org/MPL/2.0/.
-*
-* Digi International Inc. 11001 Bren Road East, Minnetonka, MN 55343
-* =======================================================================
-*/
+ * Copyright (c) 2014-2015 Digi International Inc.,
+ * All rights not expressly granted are reserved.
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this file,
+ * You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+ * Digi International Inc. 11001 Bren Road East, Minnetonka, MN 55343
+ * =======================================================================
+ */
+
 package com.digi.android.blesample.adapters;
 
 import java.text.SimpleDateFormat;
@@ -70,6 +71,34 @@ public class BleCharacteristicDetailsAdapter extends BaseAdapter implements BLEC
 		layoutInflater = parentActivity.getLayoutInflater();
 	}
 
+	@Override
+	public long getItemId(int position) {
+		return position;
+	}
+
+	@Override
+	public Object getItem(int position) {
+		return bleCharacteristic;
+	}
+
+	@Override
+	public int getCount() {
+		if (bleCharacteristic != null)
+			return 1;
+		return 0;
+	}
+
+	@Override
+	public void characteristicValueUpdated(BluetoothDevice arg0, BluetoothGattCharacteristic arg1) {
+		parentActivity.runOnUiThread(new Runnable() {
+			@Override
+			public void run() {
+				lastUpdateTime = new Date();
+				notifyDataSetChanged();
+			}
+		});
+	}
+
 	/**
 	 * Sets the BLE Characteristic that will be used in this adapter.
 	 * 
@@ -102,15 +131,6 @@ public class BleCharacteristicDetailsAdapter extends BaseAdapter implements BLEC
 	}
 	
 	/**
-	 * Returns the BLE connection used to interact with the characteristic.
-	 * 
-	 * @return BLE Connection used.
-	 */
-	public BLEConnection getBLEConnection() {
-		return connection;
-	}
-	
-	/**
 	 * Removes the BLE characteristic that is used in this adapter.
 	 */
 	public void clearCharacteristic() {
@@ -133,54 +153,6 @@ public class BleCharacteristicDetailsAdapter extends BaseAdapter implements BLEC
 			writeThread.start();
 		} else
 			bleCharacteristic = null;
-	}
-
-	@Override
-	public long getItemId(int position) {
-		return position;
-	}
-
-	@Override
-	public Object getItem(int position) {
-		return bleCharacteristic;
-	}
-
-	@Override
-	public int getCount() {
-		if (bleCharacteristic != null)
-			return 1;
-		return 0;
-	}
-
-	/**
-	 * Updates the characteristic value with the given one.
-	 * 
-	 * @param characteristic
-	 * @param timestamp
-	 */
-	public void newValueForCharacteristic(final BluetoothGattCharacteristic characteristic, final Date timestamp) {
-		// Sanity check.
-		if (!characteristic.equals(this.bleCharacteristic))
-			return;
-		
-		// Save value.
-		bleCharacteristic = characteristic;
-		lastUpdateTime = timestamp;
-		
-		notifyDataSetChanged();
-	}
-
-	/**
-	 * Enables notification updates for the given characteristic.
-	 * 
-	 * @param characteristic Characteristic to enable notification updates.
-	 */
-	public void setNotificationEnabledForService(final BluetoothGattCharacteristic characteristic) {
-		// Sanity check.
-		if ((!characteristic.equals(this.bleCharacteristic)) || (notificationEnabled == true))
-			return;
-		notificationEnabled = true;
-		notifyDataSetChanged();
 	}
 
 	@Override
@@ -209,7 +181,7 @@ public class BleCharacteristicDetailsAdapter extends BaseAdapter implements BLEC
 			@Override
 			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 				if (isChecked == notificationEnabled)
-					return; // no need to update anything
+					return; // No need to update anything.
 				handleToggleNotificationsButtonPressed(isChecked);
 			}
 		} );
@@ -257,7 +229,8 @@ public class BleCharacteristicDetailsAdapter extends BaseAdapter implements BLEC
 			propertiesString += "indicate ";
 		if (BLEUtils.isCharacteristicWritableWithoutResponse(bleCharacteristic))
 			propertiesString += "write_no_response ";
-		characteristicPropertiesText.setText(propertiesString + "]");
+		propertiesString += "]";
+		characteristicPropertiesText.setText(propertiesString);
 		// Set notifications toggle button status.
 		notificationsToggleButton.setEnabled(BLEUtils.canCharacteristicNotify(bleCharacteristic));
 		notificationsToggleButton.setChecked(notificationEnabled);
@@ -269,7 +242,8 @@ public class BleCharacteristicDetailsAdapter extends BaseAdapter implements BLEC
 		characteristicHexValueInputText.setEnabled(writeButton.isEnabled());
 		byte[] rawValue = bleCharacteristic.getValue();
 		if (rawValue != null && rawValue.length > 0)
-			characteristicHexValueInputText.setText("0x" + HexUtils.byteArrayToHexString(rawValue));
+			characteristicHexValueInputText.setText(
+					String.format("0x%s", HexUtils.byteArrayToHexString(rawValue)));
 		// Set characteristic string value.
 		if (rawValue != null)
 			characteristicValueStringText.setText(new String(rawValue));
@@ -278,7 +252,8 @@ public class BleCharacteristicDetailsAdapter extends BaseAdapter implements BLEC
 			characteristicValueDecimalText.setText(String.format("%d", ByteUtils.byteArrayToInt(rawValue)));
 		// Set last updated time.
 		if (lastUpdateTime != null)
-			characteristicUpdatedDateText.setText(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(lastUpdateTime));
+			characteristicUpdatedDateText.setText(
+					new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS", Locale.getDefault()).format(lastUpdateTime));
 		// Return the modified view.
 		return convertView;
 	}
@@ -432,16 +407,5 @@ public class BleCharacteristicDetailsAdapter extends BaseAdapter implements BLEC
 		progressDialog.setTitle(title);
 		progressDialog.setMessage(message);
 		progressDialog.show();
-	}
-
-	@Override
-	public void characteristicValueUpdated(BluetoothDevice arg0, BluetoothGattCharacteristic arg1) {
-		parentActivity.runOnUiThread(new Runnable() {
-			@Override
-			public void run() {
-				lastUpdateTime = new Date();
-				notifyDataSetChanged();
-			}
-		});
 	}
 }

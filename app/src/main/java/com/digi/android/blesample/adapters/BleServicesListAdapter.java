@@ -1,14 +1,15 @@
 /**
-* Copyright (c) 2014 Digi International Inc.,
-* All rights not expressly granted are reserved.
-*
-* This Source Code Form is subject to the terms of the Mozilla Public
-* License, v. 2.0. If a copy of the MPL was not distributed with this file,
-* You can obtain one at http://mozilla.org/MPL/2.0/.
-*
-* Digi International Inc. 11001 Bren Road East, Minnetonka, MN 55343
-* =======================================================================
-*/
+ * Copyright (c) 2014-2015 Digi International Inc.,
+ * All rights not expressly granted are reserved.
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this file,
+ * You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+ * Digi International Inc. 11001 Bren Road East, Minnetonka, MN 55343
+ * =======================================================================
+ */
+
 package com.digi.android.blesample.adapters;
 
 import java.util.ArrayList;
@@ -44,39 +45,12 @@ public class BleServicesListAdapter extends BaseAdapter {
 		bleServices  = new ArrayList<BluetoothGattService>();
 		layoutInflater = parentActivity.getLayoutInflater();
 	}
-	
-	/**
-	 * Adds the given service to the list of services.
-	 * 
-	 * @param service BLE Service to add.
-	 */
-	public void addService(BluetoothGattService service) {
-		if (!bleServices.contains(service))
-			bleServices.add(service);
-	}
-	
-	/**
-	 * Retrieves the BLE Service with at given position from the list.
-	 * 
-	 * @param position
-	 * @return BLE Service at the given position in the list.
-	 */
-	public BluetoothGattService getService(int position) {
-		return bleServices.get(position);
-	}
 
-	/**
-	 * Clears the services list.
-	 */
-	public void clearList() {
-		bleServices.clear();
-	}
-	
 	@Override
 	public long getItemId(int position) {
 		return position;
 	}
-	
+
 	@Override
 	public Object getItem(int position) {
 		return getService(position);
@@ -108,10 +82,38 @@ public class BleServicesListAdapter extends BaseAdapter {
 		serviceName.setText(name);
 		// Fill type.
 		if (BLEUtils.isServicePrimary(service))
-			serviceType.setText("Primary");
+			serviceType.setText(R.string.service_type_primary);
 		else
-			serviceType.setText("Secondary");
+			serviceType.setText(R.string.service_type_secondary);
 		// Return the modified view.
 		return convertView;
+	}
+
+	/**
+	 * Adds the given service to the list of services.
+	 * 
+	 * @param service BLE Service to add.
+	 */
+	public void addService(BluetoothGattService service) {
+		if (!bleServices.contains(service))
+			bleServices.add(service);
+	}
+	
+	/**
+	 * Retrieves the BLE Service with at given position from the list.
+	 * 
+	 * @param position The position of the BLE service to get.
+	 *
+	 * @return BLE Service at the given position in the list.
+	 */
+	public BluetoothGattService getService(int position) {
+		return bleServices.get(position);
+	}
+
+	/**
+	 * Clears the services list.
+	 */
+	public void clearList() {
+		bleServices.clear();
 	}
 }

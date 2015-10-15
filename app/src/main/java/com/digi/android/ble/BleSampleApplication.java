@@ -10,13 +10,22 @@
  * =======================================================================
  */
 
-package com.digi.android.blesample;
-
-import com.digi.android.ble.BLEManager;
+package com.digi.android.ble;
 
 import android.app.Application;
 import android.graphics.drawable.Drawable;
 
+/**
+ * Bluetooth Low Energy sample application.
+ *
+ * <p>This application demonstrates the usage of the Bluetooth Low Energy API in
+ * Android. The application scans for Bluetooth Low Energy devices in range, allows
+ * to connect to them, lists their services and characteristics and allows to read
+ * and write their values.</p>
+ *
+ * <p>For a complete description on the example, refer to the 'README.md' file
+ * included in the example directory.</p>
+ */
 public class BleSampleApplication extends Application {
 
 	// Variables.

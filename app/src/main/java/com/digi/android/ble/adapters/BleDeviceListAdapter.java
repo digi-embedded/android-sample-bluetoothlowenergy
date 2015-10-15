@@ -10,12 +10,12 @@
  * =======================================================================
  */
 
-package com.digi.android.blesample.adapters;
+package com.digi.android.ble.adapters;
 
 import java.util.ArrayList;
 
-import com.digi.android.blesample.BleSampleApplication;
-import com.digi.android.blesample.R;
+import com.digi.android.ble.BleSampleApplication;
+import com.digi.android.ble.R;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;

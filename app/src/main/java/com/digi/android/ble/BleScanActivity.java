@@ -10,12 +10,11 @@
  * =======================================================================
  */
 
-package com.digi.android.blesample;
+package com.digi.android.ble;
 
-import com.digi.android.ble.BLEManager;
 import com.digi.android.ble.exceptions.BLEException;
 import com.digi.android.ble.listeners.BLEDeviceScanListener;
-import com.digi.android.blesample.adapters.BleDeviceListAdapter;
+import com.digi.android.ble.adapters.BleDeviceListAdapter;
 
 import android.app.Activity;
 import android.app.ProgressDialog;

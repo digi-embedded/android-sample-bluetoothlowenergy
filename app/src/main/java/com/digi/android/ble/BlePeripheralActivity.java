@@ -9,23 +9,21 @@
 * Digi International Inc. 11001 Bren Road East, Minnetonka, MN 55343
 * =======================================================================
 */
-package com.digi.android.blesample;
+package com.digi.android.ble;
 
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import com.digi.android.ble.BLEConnection;
-import com.digi.android.ble.BLEManager;
 import com.digi.android.ble.exceptions.BLEException;
 import com.digi.android.ble.listeners.BLEConnectionListener;
 import com.digi.android.ble.listeners.BLEDisoverServicesListener;
 import com.digi.android.ble.listeners.BLERSSIUpdateListener;
 import com.digi.android.ble.utils.BLEUtils;
-import com.digi.android.blesample.adapters.BleCharacteristicDetailsAdapter;
-import com.digi.android.blesample.adapters.BleCharacteristicsListAdapter;
-import com.digi.android.blesample.adapters.BleServicesListAdapter;
-import com.digi.android.blesample.models.ListType;
+import com.digi.android.ble.adapters.BleCharacteristicDetailsAdapter;
+import com.digi.android.ble.adapters.BleCharacteristicsListAdapter;
+import com.digi.android.ble.adapters.BleServicesListAdapter;
+import com.digi.android.ble.models.ListType;
 
 import android.os.Bundle;
 import android.annotation.SuppressLint;

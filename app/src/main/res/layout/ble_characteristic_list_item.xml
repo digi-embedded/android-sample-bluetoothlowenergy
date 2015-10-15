@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/peripheral_list_characteristic_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:layout_marginStart="7dp"
+        android:text="@string/peripheral_name_init"
         android:textSize="22sp"
-        android:textStyle="bold"
-        android:text="@string/peripheral_name_init" />
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/peripheral_list_characteristic_uuid"
@@ -21,13 +21,13 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_below="@id/peripheral_list_characteristic_name"
-        android:layout_marginStart="7dp"
         android:layout_marginEnd="5dp"
+        android:layout_marginStart="7dp"
+        android:text="@string/peripheral_uuid_initial"
         android:textColor="@color/very_dark_gray"
-        android:textSize="16sp"
-        android:text="@string/peripheral_uuid_initial" />
-    
-    <ImageView 
+        android:textSize="16sp" />
+
+    <ImageView
         android:id="@+id/read_enabled_image"
         android:layout_width="25dp"
         android:layout_height="25dp"
@@ -35,28 +35,28 @@
         android:layout_marginEnd="5dp"
         android:layout_marginTop="9dp"
         android:src="@drawable/read"
-        tools:ignore="ContentDescription"/>
-    
-    <ImageView 
+        tools:ignore="ContentDescription" />
+
+    <ImageView
         android:id="@+id/write_enabled_image"
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:layout_toStartOf="@id/read_enabled_image"
         android:layout_alignWithParentIfMissing="true"
         android:layout_marginEnd="5dp"
         android:layout_marginTop="9dp"
+        android:layout_toStartOf="@id/read_enabled_image"
         android:src="@drawable/write"
-        tools:ignore="ContentDescription"/>
-    
-    <ImageView 
+        tools:ignore="ContentDescription" />
+
+    <ImageView
         android:id="@+id/notify_enabled_image"
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:layout_toStartOf="@id/write_enabled_image"
         android:layout_alignWithParentIfMissing="true"
         android:layout_marginEnd="5dp"
         android:layout_marginTop="9dp"
+        android:layout_toStartOf="@id/write_enabled_image"
         android:src="@drawable/notify"
-        tools:ignore="ContentDescription"/>
+        tools:ignore="ContentDescription" />
 
 </RelativeLayout>

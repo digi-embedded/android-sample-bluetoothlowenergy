@@ -10,7 +10,7 @@
  * =======================================================================
  */
 
-package com.digi.android.blesample.adapters;
+package com.digi.android.ble.adapters;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -22,7 +22,7 @@ import com.digi.android.ble.listeners.BLECharacteristicUpdateListener;
 import com.digi.android.ble.utils.BLEUtils;
 import com.digi.android.ble.utils.ByteUtils;
 import com.digi.android.ble.utils.HexUtils;
-import com.digi.android.blesample.R;
+import com.digi.android.ble.R;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;

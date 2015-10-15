@@ -49,7 +49,7 @@
     <string name="peripheral_name_init">Test Device</string>
     <string name="peripheral_address_initial">00:11:22:33:44:55:66:77</string>
     <string name="peripheral_rssi_initial">-48 db</string>
-    <string name="peripheral_uuid_initial">00001800-0000-1000-8000-00805f9b34fb</string>
+    <string name="peripheral_uuid_initial">00001800&#8211;0000&#8211;1000&#8211;8000&#8211;00805f9b34fb</string>
     <string name="service_name_initial">Test Service</string>
     <string name="service_type_primary">Primary</string>
     <string name="service_type_secondary">Secondary</string>

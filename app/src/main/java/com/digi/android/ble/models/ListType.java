@@ -10,7 +10,7 @@
  * =======================================================================
  */
 
-package com.digi.android.blesample.models;
+package com.digi.android.ble.models;
 
 /**
  * Enumeration class defining the different types of the main list contents.

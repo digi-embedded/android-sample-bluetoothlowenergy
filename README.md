@@ -14,7 +14,7 @@ To run this example you need:
 * One compatible device to host the application.
 * A USB connection between the device and the host PC in order to transfer and
   launch the application.
-* A remote Bluetooth Low Energy device to connect to
+* A remote Bluetooth Low Energy device to connect to.
 
 Demo setup
 ----------

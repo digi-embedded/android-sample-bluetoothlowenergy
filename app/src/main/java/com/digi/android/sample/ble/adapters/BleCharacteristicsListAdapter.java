@@ -14,13 +14,13 @@
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-package com.digi.android.ble.adapters;
+package com.digi.android.sample.ble.adapters;
 
 import java.util.ArrayList;
 import java.util.Locale;
 
 import com.digi.android.ble.utils.BLEUtils;
-import com.digi.android.ble.R;
+import com.digi.android.sample.ble.R;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;

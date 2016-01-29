@@ -14,11 +14,13 @@
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-package com.digi.android.ble;
+package com.digi.android.sample.ble;
 
+import com.digi.android.ble.BLEManager;
 import com.digi.android.ble.exceptions.BLEException;
 import com.digi.android.ble.listeners.BLEDeviceScanListener;
-import com.digi.android.ble.adapters.BleDeviceListAdapter;
+import com.digi.android.sample.ble.adapters.BleDeviceListAdapter;
+import com.digi.android.sample.ble.R;
 
 import android.app.Activity;
 import android.app.ProgressDialog;

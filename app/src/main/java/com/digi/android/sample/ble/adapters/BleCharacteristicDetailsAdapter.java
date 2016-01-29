@@ -14,7 +14,7 @@
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-package com.digi.android.ble.adapters;
+package com.digi.android.sample.ble.adapters;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -26,7 +26,7 @@ import com.digi.android.ble.listeners.BLECharacteristicUpdateListener;
 import com.digi.android.ble.utils.BLEUtils;
 import com.digi.android.ble.utils.ByteUtils;
 import com.digi.android.ble.utils.HexUtils;
-import com.digi.android.ble.R;
+import com.digi.android.sample.ble.R;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;

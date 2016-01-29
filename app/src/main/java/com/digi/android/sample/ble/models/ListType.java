@@ -14,7 +14,7 @@
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-package com.digi.android.ble.models;
+package com.digi.android.sample.ble.models;
 
 /**
  * Enumeration class defining the different types of the main list contents.

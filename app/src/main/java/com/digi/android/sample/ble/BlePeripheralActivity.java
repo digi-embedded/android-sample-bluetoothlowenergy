@@ -14,21 +14,24 @@
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-package com.digi.android.ble;
+package com.digi.android.sample.ble;
 
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import com.digi.android.ble.BLEConnection;
+import com.digi.android.ble.BLEManager;
 import com.digi.android.ble.exceptions.BLEException;
 import com.digi.android.ble.listeners.BLEConnectionListener;
 import com.digi.android.ble.listeners.BLEDisoverServicesListener;
 import com.digi.android.ble.listeners.BLERSSIUpdateListener;
 import com.digi.android.ble.utils.BLEUtils;
-import com.digi.android.ble.adapters.BleCharacteristicDetailsAdapter;
-import com.digi.android.ble.adapters.BleCharacteristicsListAdapter;
-import com.digi.android.ble.adapters.BleServicesListAdapter;
-import com.digi.android.ble.models.ListType;
+import com.digi.android.sample.ble.adapters.BleCharacteristicDetailsAdapter;
+import com.digi.android.sample.ble.adapters.BleCharacteristicsListAdapter;
+import com.digi.android.sample.ble.adapters.BleServicesListAdapter;
+import com.digi.android.sample.ble.models.ListType;
+import com.digi.android.sample.ble.R;
 
 import android.os.Bundle;
 import android.annotation.SuppressLint;

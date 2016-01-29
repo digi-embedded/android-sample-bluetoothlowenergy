@@ -14,10 +14,13 @@
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-package com.digi.android.ble;
+package com.digi.android.sample.ble;
 
 import android.app.Application;
 import android.graphics.drawable.Drawable;
+
+import com.digi.android.ble.BLEManager;
+import com.digi.android.sample.ble.R;
 
 /**
  * Bluetooth Low Energy sample application.

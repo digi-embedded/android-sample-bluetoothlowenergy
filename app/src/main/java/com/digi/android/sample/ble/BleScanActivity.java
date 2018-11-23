@@ -22,18 +22,23 @@ import com.digi.android.ble.listeners.BLEDeviceScanListener;
 import com.digi.android.sample.ble.adapters.BleDeviceListAdapter;
 import com.digi.android.sample.ble.R;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.bluetooth.BluetoothDevice;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.RequiresPermission;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.webkit.PermissionRequest;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+
+import java.security.Permission;
 
 public class BleScanActivity extends Activity implements BLEDeviceScanListener {
 
@@ -61,6 +66,7 @@ public class BleScanActivity extends Activity implements BLEDeviceScanListener {
 		
 		// Retrieve BLE Manager.
 		bleManager = BleSampleApplication.getInstance().getBLEManager();
+		requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
 	}
 
 	@Override

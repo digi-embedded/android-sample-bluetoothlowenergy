@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 'Digi International:Digi SDK Add-On for Embedded:26'
-    buildToolsVersion "23.0.2"
+    buildToolsVersion "28.0.3"
     
     defaultConfig {
         applicationId 'com.digi.android.sample.ble'

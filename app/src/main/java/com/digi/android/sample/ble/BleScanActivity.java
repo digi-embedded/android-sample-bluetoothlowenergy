@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (c) 2014-2016, Digi International Inc. <support@digi.com>
  *
  * Permission to use, copy, modify, and/or distribute this software for any
@@ -107,7 +107,7 @@ public class BleScanActivity extends Activity implements BLEDeviceScanListener {
 	 * Initializes all the required UI Components with listeners.
 	 */
 	private void initializeUIComponents() {
-		bleDevicesList = (ListView)findViewById(R.id.ble_devices_list);
+		bleDevicesList = findViewById(R.id.ble_devices_list);
 		bleDevicesList.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -123,14 +123,14 @@ public class BleScanActivity extends Activity implements BLEDeviceScanListener {
 		});
 
 		// Buttons.
-		scanButton = (Button)findViewById(R.id.scan_button);
+		scanButton = findViewById(R.id.scan_button);
 		scanButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				startScanning();
 			}
 		});
-		Button clearButton = (Button) findViewById(R.id.clear_button);
+		Button clearButton = findViewById(R.id.clear_button);
 		clearButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {

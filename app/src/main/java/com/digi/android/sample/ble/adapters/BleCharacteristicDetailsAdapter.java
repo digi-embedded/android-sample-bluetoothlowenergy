@@ -1,5 +1,5 @@
-/**
- * Copyright (c) 2014-2016, Digi International Inc. <support@digi.com>
+/*
+ * Copyright (c) 2014-2019, Digi International Inc. <support@digi.com>
  *
  * Permission to use, copy, modify, and/or distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
@@ -51,7 +51,7 @@ public class BleCharacteristicDetailsAdapter extends BaseAdapter implements BLEC
 	// Variables.
 	private BluetoothGattCharacteristic bleCharacteristic = null;
 
-	private LayoutInflater layoutInflater;
+	private final LayoutInflater layoutInflater;
 
 	private BLEConnection connection = null;
 	
@@ -61,7 +61,7 @@ public class BleCharacteristicDetailsAdapter extends BaseAdapter implements BLEC
 	
 	private ProgressDialog progressDialog;
 	
-	private Activity parentActivity;
+	private final Activity parentActivity;
 	
 	/**
 	 * Class constructor. Instantiates a new 
@@ -167,20 +167,20 @@ public class BleCharacteristicDetailsAdapter extends BaseAdapter implements BLEC
 			convertView = layoutInflater.inflate(R.layout.ble_characteristic_details_item, null);
 		// Find view fields.
 		// Texts.
-		TextView serviceNameText = (TextView)convertView.findViewById(R.id.char_details_service);
-		TextView serviceUuidText = (TextView)convertView.findViewById(R.id.char_details_service_uuid);
-		TextView characteristicNameText = (TextView)convertView.findViewById(R.id.char_details_name);
-		TextView characteristicUuidText = (TextView)convertView.findViewById(R.id.char_details_uuid);
-		TextView characteristicDataTypeText = (TextView)convertView.findViewById(R.id.char_details_type);
-		TextView characteristicPropertiesText = (TextView) convertView.findViewById(R.id.char_details_properties);
-		TextView characteristicUpdatedDateText = (TextView) convertView.findViewById(R.id.char_details_timestamp);
-		TextView characteristicValueStringText = (TextView) convertView.findViewById(R.id.char_details_value_string);
-		TextView characteristicValueDecimalText = (TextView) convertView.findViewById(R.id.char_details_value_decimal);
+		TextView serviceNameText = convertView.findViewById(R.id.char_details_service);
+		TextView serviceUuidText = convertView.findViewById(R.id.char_details_service_uuid);
+		TextView characteristicNameText = convertView.findViewById(R.id.char_details_name);
+		TextView characteristicUuidText = convertView.findViewById(R.id.char_details_uuid);
+		TextView characteristicDataTypeText = convertView.findViewById(R.id.char_details_type);
+		TextView characteristicPropertiesText = convertView.findViewById(R.id.char_details_properties);
+		TextView characteristicUpdatedDateText = convertView.findViewById(R.id.char_details_timestamp);
+		TextView characteristicValueStringText = convertView.findViewById(R.id.char_details_value_string);
+		TextView characteristicValueDecimalText = convertView.findViewById(R.id.char_details_value_decimal);
 		
 		// Input texts.
-		EditText characteristicHexValueInputText = (EditText) convertView.findViewById(R.id.char_details_hex_value);
+		EditText characteristicHexValueInputText = convertView.findViewById(R.id.char_details_hex_value);
 		// Buttons.
-		ToggleButton notificationsToggleButton = (ToggleButton) convertView.findViewById(R.id.char_details_notification_switcher);
+		ToggleButton notificationsToggleButton = convertView.findViewById(R.id.char_details_notification_switcher);
 		notificationsToggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 			@Override
 			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -189,18 +189,18 @@ public class BleCharacteristicDetailsAdapter extends BaseAdapter implements BLEC
 				handleToggleNotificationsButtonPressed(isChecked);
 			}
 		} );
-		Button readButton = (Button) convertView.findViewById(R.id.char_details_read_btn);
+		Button readButton = convertView.findViewById(R.id.char_details_read_btn);
 		readButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				handleReadButtonPressed();
 			}
 		});
-		Button writeButton = (Button) convertView.findViewById(R.id.char_details_write_btn);
+		Button writeButton = convertView.findViewById(R.id.char_details_write_btn);
 		writeButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(final View v) {
-				EditText valueField = (EditText)((RelativeLayout)v.getParentForAccessibility()).findViewById(R.id.char_details_hex_value);
+				EditText valueField = ((RelativeLayout)v.getParentForAccessibility()).findViewById(R.id.char_details_hex_value);
 				String value =  valueField.getText().toString().toLowerCase(Locale.getDefault());
 				byte[] dataToWrite = HexUtils.hexStringToByteArray(value);
 				handleWriteButtonPressed(dataToWrite);
@@ -253,7 +253,7 @@ public class BleCharacteristicDetailsAdapter extends BaseAdapter implements BLEC
 			characteristicValueStringText.setText(new String(rawValue));
 		// Set characteristic int value.
 		if (rawValue != null)
-			characteristicValueDecimalText.setText(String.format("%d", ByteUtils.byteArrayToInt(rawValue)));
+			characteristicValueDecimalText.setText(String.format(Locale.getDefault(), "%d", ByteUtils.byteArrayToInt(rawValue)));
 		// Set last updated time.
 		if (lastUpdateTime != null)
 			characteristicUpdatedDateText.setText(

@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (c) 2014-2016, Digi International Inc. <support@digi.com>
  *
  * Permission to use, copy, modify, and/or distribute this software for any
@@ -34,11 +34,11 @@ import android.widget.TextView;
 public class BleDeviceListAdapter extends BaseAdapter {
 
 	// Variables.
-	private ArrayList<BluetoothDevice> bleDevices;
+	private final ArrayList<BluetoothDevice> bleDevices;
 	
-	private ArrayList<Integer> bleDevicesRssi;
+	private final ArrayList<Integer> bleDevicesRssi;
 
-	private LayoutInflater layoutInflater;
+	private final LayoutInflater layoutInflater;
 
 	/**
 	 * Class constructor. Instantiates a new {@code BleDeviceListAdapter}
@@ -49,8 +49,8 @@ public class BleDeviceListAdapter extends BaseAdapter {
 	public BleDeviceListAdapter(Activity parentActivity) {
 		super();
 		// Initialize variables.
-		bleDevices  = new ArrayList<BluetoothDevice>();
-		bleDevicesRssi = new ArrayList<Integer>();
+		bleDevices  = new ArrayList<>();
+		bleDevicesRssi = new ArrayList<>();
 		layoutInflater = parentActivity.getLayoutInflater();
 	}
 
@@ -77,10 +77,10 @@ public class BleDeviceListAdapter extends BaseAdapter {
 			convertView = layoutInflater.inflate(R.layout.ble_device_list_item, null);
 
 		// Retrieve the fields.
-		TextView deviceAddress = (TextView)convertView.findViewById(R.id.device_address);
-		TextView deviceName = (TextView)convertView.findViewById(R.id.device_name);
-		TextView deviceRssi = (TextView)convertView.findViewById(R.id.device_rssi);
-		ImageView rssiImage = (ImageView)convertView.findViewById(R.id.rssi_image);
+		TextView deviceAddress = convertView.findViewById(R.id.device_address);
+		TextView deviceName = convertView.findViewById(R.id.device_name);
+		TextView deviceRssi = convertView.findViewById(R.id.device_rssi);
+		ImageView rssiImage = convertView.findViewById(R.id.rssi_image);
 
 		// Retrieve the BLE Device.
 		BluetoothDevice device = bleDevices.get(position);

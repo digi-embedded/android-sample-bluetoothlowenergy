@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (c) 2014-2016, Digi International Inc. <support@digi.com>
  *
  * Permission to use, copy, modify, and/or distribute this software for any
@@ -34,9 +34,9 @@ import android.widget.TextView;
 public class BleServicesListAdapter extends BaseAdapter {
 	
 	// Variables.
-	private ArrayList<BluetoothGattService> bleServices;
+	private final ArrayList<BluetoothGattService> bleServices;
 	
-	private LayoutInflater layoutInflater;
+	private final LayoutInflater layoutInflater;
 	
 	/**
 	 * Class constructor. Instantiates a new {@code BleServicesListAdapter}
@@ -46,7 +46,7 @@ public class BleServicesListAdapter extends BaseAdapter {
 	 */
 	public BleServicesListAdapter(Activity parentActivity) {
 		super();
-		bleServices  = new ArrayList<BluetoothGattService>();
+		bleServices  = new ArrayList<>();
 		layoutInflater = parentActivity.getLayoutInflater();
 	}
 
@@ -74,9 +74,9 @@ public class BleServicesListAdapter extends BaseAdapter {
 		// Retrieve the selected service.
 		BluetoothGattService service = bleServices.get(position);
 		// Retrieve the view fields.
-		TextView serviceName = (TextView)convertView.findViewById(R.id.peripheral_list_services_name);
-		TextView serviceUuid = (TextView)convertView.findViewById(R.id.peripheral_list_services_uuid);
-		TextView serviceType = (TextView)convertView.findViewById(R.id.peripheral_list_service_type);
+		TextView serviceName = convertView.findViewById(R.id.peripheral_list_services_name);
+		TextView serviceUuid = convertView.findViewById(R.id.peripheral_list_services_uuid);
+		TextView serviceType = convertView.findViewById(R.id.peripheral_list_service_type);
 		// Fill the fields with service values.
 		// Fill UUID.
 		String uuid = service.getUuid().toString().toLowerCase(Locale.getDefault());

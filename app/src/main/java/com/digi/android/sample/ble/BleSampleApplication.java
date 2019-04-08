@@ -1,5 +1,5 @@
-/**
- * Copyright (c) 2014-2016, Digi International Inc. <support@digi.com>
+/*
+ * Copyright (c) 2014-2019, Digi International Inc. <support@digi.com>
  *
  * Permission to use, copy, modify, and/or distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
@@ -18,9 +18,9 @@ package com.digi.android.sample.ble;
 
 import android.app.Application;
 import android.graphics.drawable.Drawable;
+import android.support.v4.content.res.ResourcesCompat;
 
 import com.digi.android.ble.BLEManager;
-import com.digi.android.sample.ble.R;
 
 /**
  * Bluetooth Low Energy sample application.
@@ -39,7 +39,7 @@ public class BleSampleApplication extends Application {
 	private BLEManager bleManager;
 	
 	private static BleSampleApplication instance;
-	
+
 	@Override
 	public void onCreate() {
 		super.onCreate();
@@ -75,14 +75,14 @@ public class BleSampleApplication extends Application {
 	 */
 	public Drawable getRSSIImage(int rssi) {
 		if (rssi < -90)
-			return getResources().getDrawable(R.drawable.rssi_1);
+			return ResourcesCompat.getDrawable(getResources(), R.drawable.rssi_1, null);
 		else if (rssi < -72)
-			return getResources().getDrawable(R.drawable.rssi_2);
+			return ResourcesCompat.getDrawable(getResources(), R.drawable.rssi_2, null);
 		else if (rssi < -50)
-			return getResources().getDrawable(R.drawable.rssi_3);
+			return ResourcesCompat.getDrawable(getResources(), R.drawable.rssi_3, null);
 		else if (rssi < -25)
-			return getResources().getDrawable(R.drawable.rssi_4);
+			return ResourcesCompat.getDrawable(getResources(), R.drawable.rssi_4, null);
 		else
-			return getResources().getDrawable(R.drawable.rssi_5);
+			return ResourcesCompat.getDrawable(getResources(), R.drawable.rssi_5, null);
 	}
 }

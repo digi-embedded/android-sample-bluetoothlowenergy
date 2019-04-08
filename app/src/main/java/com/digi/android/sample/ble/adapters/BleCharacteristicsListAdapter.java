@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (c) 2014-2016, Digi International Inc. <support@digi.com>
  *
  * Permission to use, copy, modify, and/or distribute this software for any
@@ -35,9 +35,9 @@ import android.widget.TextView;
 public class BleCharacteristicsListAdapter extends BaseAdapter {
 	
 	// Variables.
-	private ArrayList<BluetoothGattCharacteristic> bleCharacteristics;
+	private final ArrayList<BluetoothGattCharacteristic> bleCharacteristics;
 	
-	private LayoutInflater layoutInflater;
+	private final LayoutInflater layoutInflater;
 
 	/**
 	 * Class constructor. Instantiates a new 
@@ -47,7 +47,7 @@ public class BleCharacteristicsListAdapter extends BaseAdapter {
 	 */
 	public BleCharacteristicsListAdapter(Activity parent) {
 		super();
-		bleCharacteristics  = new ArrayList<BluetoothGattCharacteristic>();
+		bleCharacteristics  = new ArrayList<>();
 		layoutInflater = parent.getLayoutInflater();
 	}
 
@@ -75,11 +75,11 @@ public class BleCharacteristicsListAdapter extends BaseAdapter {
 		// Retrieve the selected characteristic.
 		BluetoothGattCharacteristic ch = getCharacteristic(position);
 		// Get view fields.
-		TextView charName = (TextView)convertView.findViewById(R.id.peripheral_list_characteristic_name);
-		TextView charUuid = (TextView)convertView.findViewById(R.id.peripheral_list_characteristic_uuid);
-		ImageView readImage = (ImageView)convertView.findViewById(R.id.read_enabled_image);
-		ImageView writeImage = (ImageView)convertView.findViewById(R.id.write_enabled_image);
-		ImageView notifyImage = (ImageView)convertView.findViewById(R.id.notify_enabled_image);
+		TextView charName = convertView.findViewById(R.id.peripheral_list_characteristic_name);
+		TextView charUuid = convertView.findViewById(R.id.peripheral_list_characteristic_uuid);
+		ImageView readImage = convertView.findViewById(R.id.read_enabled_image);
+		ImageView writeImage = convertView.findViewById(R.id.write_enabled_image);
+		ImageView notifyImage = convertView.findViewById(R.id.notify_enabled_image);
 		// Fill fields.
 		// Fill UUID.
 		String uuid = ch.getUuid().toString().toLowerCase(Locale.getDefault());

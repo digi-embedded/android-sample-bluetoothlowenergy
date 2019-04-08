@@ -1,5 +1,5 @@
-/**
- * Copyright (c) 2014-2016, Digi International Inc. <support@digi.com>
+/*
+ * Copyright (c) 2014-2019, Digi International Inc. <support@digi.com>
  *
  * Permission to use, copy, modify, and/or distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
@@ -31,7 +31,6 @@ import com.digi.android.sample.ble.adapters.BleCharacteristicDetailsAdapter;
 import com.digi.android.sample.ble.adapters.BleCharacteristicsListAdapter;
 import com.digi.android.sample.ble.adapters.BleServicesListAdapter;
 import com.digi.android.sample.ble.models.ListType;
-import com.digi.android.sample.ble.R;
 
 import android.os.Bundle;
 import android.annotation.SuppressLint;
@@ -124,35 +123,35 @@ public class BlePeripheralActivity extends Activity implements BLERSSIUpdateList
 	@SuppressLint("InflateParams")
 	private void initializeUIElements() {
 		// Texts.
-		deviceNameText = (TextView) findViewById(R.id.peripheral_name);
-		deviceAddressText = (TextView) findViewById(R.id.peripheral_address);
-		deviceRssiText = (TextView) findViewById(R.id.peripheral_rssi);
+		deviceNameText = findViewById(R.id.peripheral_name);
+		deviceAddressText = findViewById(R.id.peripheral_address);
+		deviceRssiText = findViewById(R.id.peripheral_rssi);
 		// List.
-		mainList = (ListView) findViewById(R.id.listView);
+		mainList = findViewById(R.id.listView);
 		mainList.setOnItemClickListener(listClickListener);
 		View listViewHeader = getLayoutInflater().inflate(R.layout.ble_main_list_header, null, false);
 		mainList.addHeaderView(listViewHeader);
 		// List elements.
-		headerTitleText = (TextView) listViewHeader.findViewById(R.id.peripheral_list_title);
+		headerTitleText = listViewHeader.findViewById(R.id.peripheral_list_title);
 		// Images.
-		headerBackImage = (ImageView) listViewHeader.findViewById(R.id.peripheral_list_back);
-		rssiImage = (ImageView) findViewById(R.id.rssi_image);
+		headerBackImage = listViewHeader.findViewById(R.id.peripheral_list_back);
+		rssiImage = findViewById(R.id.rssi_image);
 		// Buttons.
-		connectButton = (Button) findViewById(R.id.connect_button);
+		connectButton = findViewById(R.id.connect_button);
 		connectButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				connect();
 			}
 		});
-		disconnectButton = (Button) findViewById(R.id.disconnect_button);
+		disconnectButton = findViewById(R.id.disconnect_button);
 		disconnectButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				disconnect();
 			}
 		});
-		Button backButton = (Button) findViewById(R.id.back_button);
+		Button backButton = findViewById(R.id.back_button);
 		backButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -164,7 +163,7 @@ public class BlePeripheralActivity extends Activity implements BLERSSIUpdateList
 	}
 	
 	// Click listener used by the list.
-	private AdapterView.OnItemClickListener listClickListener = new AdapterView.OnItemClickListener() {
+	private final AdapterView.OnItemClickListener listClickListener = new AdapterView.OnItemClickListener() {
 		@Override
 		public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 			System.out.println("ITEM PRESSED: " + position);

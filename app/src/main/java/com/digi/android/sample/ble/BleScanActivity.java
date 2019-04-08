@@ -20,25 +20,29 @@ import com.digi.android.ble.BLEManager;
 import com.digi.android.ble.exceptions.BLEException;
 import com.digi.android.ble.listeners.BLEDeviceScanListener;
 import com.digi.android.sample.ble.adapters.BleDeviceListAdapter;
-import com.digi.android.sample.ble.R;
 
 import android.Manifest;
+import android.annotation.TargetApi;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.bluetooth.BluetoothDevice;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresPermission;
+import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.webkit.PermissionRequest;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
-import java.security.Permission;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BleScanActivity extends Activity implements BLEDeviceScanListener {
 
@@ -56,6 +60,11 @@ public class BleScanActivity extends Activity implements BLEDeviceScanListener {
 	
 	private Button scanButton;
 
+	private final ArrayList<String> wantedPermissions = new ArrayList<>();
+	private ArrayList<String> permissionsToRequest;
+	// Integer for permissions results request
+	private static final int ALL_PERMISSIONS_RESULT = 1011;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -66,7 +75,9 @@ public class BleScanActivity extends Activity implements BLEDeviceScanListener {
 		
 		// Retrieve BLE Manager.
 		bleManager = BleSampleApplication.getInstance().getBLEManager();
-		requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
+
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+			managePermissions();
 	}
 
 	@Override
@@ -234,5 +245,82 @@ public class BleScanActivity extends Activity implements BLEDeviceScanListener {
 				devicesListAdapter.notifyDataSetChanged();
 			}
 		});
+	}
+
+	@TargetApi(Build.VERSION_CODES.M)
+	private void managePermissions() {
+		wantedPermissions.add(Manifest.permission.ACCESS_FINE_LOCATION);
+		wantedPermissions.add(Manifest.permission.ACCESS_COARSE_LOCATION);
+
+		permissionsToRequest = getPermissionsToRequest(wantedPermissions);
+
+		if (permissionsToRequest.size() > 0) {
+			requestPermissions(permissionsToRequest.toArray(
+					new String[0]), ALL_PERMISSIONS_RESULT);
+		}
+	}
+
+	@TargetApi(Build.VERSION_CODES.M)
+	private ArrayList<String> getPermissionsToRequest(ArrayList<String> wantedPermissions) {
+		ArrayList<String> result = new ArrayList<>();
+
+		for (String p : wantedPermissions) {
+			if (!hasPermission(p))
+				result.add(p);
+		}
+
+		return result;
+	}
+
+	@TargetApi(Build.VERSION_CODES.M)
+	private boolean hasPermission(String permission) {
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+			return checkSelfPermission(permission) == PackageManager.PERMISSION_GRANTED;
+
+		return true;
+	}
+
+	@TargetApi(Build.VERSION_CODES.M)
+	private void askForPermissions(final List<String> permissionsRejected) {
+		if (!shouldShowRequestPermissionRationale(permissionsRejected.get(0)))
+			return;
+
+		new AlertDialog.Builder(BleScanActivity.this).
+				setMessage("Starting from Android 6.0 Marshmallow the system requires location "
+						+ "permissions in order to scan for Bluetooth LE devices.\n\n"
+						+ "Bluetooth beacons, like iBeacons or Eddystone beacons, may be used "
+						+ "to determine the device's and user's location. This application is "
+						+ "not using this information in any way.").
+				setPositiveButton("OK", new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialogInterface, int i) {
+						if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+							requestPermissions(permissionsRejected.
+									toArray(new String[permissionsRejected.size()]), ALL_PERMISSIONS_RESULT);
+						}
+					}
+				}).setNegativeButton("Cancel", null).create().show();
+	}
+
+	@Override
+	public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+		switch(requestCode) {
+			case ALL_PERMISSIONS_RESULT:
+				ArrayList<String> permissionsRejected = new ArrayList<>();
+				for (String p : permissionsToRequest) {
+					if (!hasPermission(p))
+						permissionsRejected.add(p);
+				}
+
+				if (permissionsRejected.size() == 0)
+					break;
+
+				askForPermissions(permissionsRejected);
+
+				break;
+			default:
+				super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+				break;
+		}
 	}
 }

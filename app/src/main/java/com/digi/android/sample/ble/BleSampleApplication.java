@@ -18,7 +18,7 @@ package com.digi.android.sample.ble;
 
 import android.app.Application;
 import android.graphics.drawable.Drawable;
-import android.support.v4.content.res.ResourcesCompat;
+import androidx.core.content.res.ResourcesCompat;
 
 import com.digi.android.ble.BLEManager;
 

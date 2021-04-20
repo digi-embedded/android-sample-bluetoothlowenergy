@@ -48,16 +48,16 @@ public class BleScanActivity extends Activity implements BLEDeviceScanListener {
 
 	// Constants.
 	private static final long SCANNING_TIMEOUT = 5 * 1000; /* 5 seconds */
-	
+
 	// Variables.
 	private BLEManager bleManager;
-	
+
 	private BleDeviceListAdapter devicesListAdapter = null;
-	
+
 	private ListView bleDevicesList;
-	
+
 	private ProgressDialog progressDialog;
-	
+
 	private Button scanButton;
 
 	private final ArrayList<String> wantedPermissions = new ArrayList<>();
@@ -69,10 +69,10 @@ public class BleScanActivity extends Activity implements BLEDeviceScanListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_scan);
-		
+
 		// Initialize UI Components.
 		initializeUIComponents();
-		
+
 		// Retrieve BLE Manager.
 		bleManager = BleSampleApplication.getInstance().getBLEManager();
 
@@ -113,7 +113,7 @@ public class BleScanActivity extends Activity implements BLEDeviceScanListener {
 	public void deviceFound(final BluetoothDevice bleDevice, final int rssi, final byte[] scanRecords) {
 		addBLEDevice(bleDevice, rssi);
 	}
-	
+
 	/**
 	 * Initializes all the required UI Components with listeners.
 	 */
@@ -150,7 +150,7 @@ public class BleScanActivity extends Activity implements BLEDeviceScanListener {
 			}
 		});
 	}
-	
+
 	/**
 	 * Starts the scanning process.
 	 */
@@ -164,7 +164,7 @@ public class BleScanActivity extends Activity implements BLEDeviceScanListener {
 			hideProgressgDialog();
 		}
 	}
-	
+
 	/**
 	 * Stops the scanning process.
 	 */
@@ -213,7 +213,7 @@ public class BleScanActivity extends Activity implements BLEDeviceScanListener {
 			}
 		});
 	}
-	
+
 	/**
 	 * Hides the progress dialog.
 	 */
@@ -228,7 +228,7 @@ public class BleScanActivity extends Activity implements BLEDeviceScanListener {
 			}
 		});
 	}
-	
+
 	/**
 	 * Adds the given device to the list of discovered Bluetooth Low Energy
 	 * devices.
@@ -295,8 +295,7 @@ public class BleScanActivity extends Activity implements BLEDeviceScanListener {
 					@Override
 					public void onClick(DialogInterface dialogInterface, int i) {
 						if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-							requestPermissions(permissionsRejected.
-									toArray(new String[permissionsRejected.size()]), ALL_PERMISSIONS_RESULT);
+							requestPermissions(permissionsRejected.toArray(new String[0]), ALL_PERMISSIONS_RESULT);
 						}
 					}
 				}).setNegativeButton("Cancel", null).create().show();
@@ -304,23 +303,19 @@ public class BleScanActivity extends Activity implements BLEDeviceScanListener {
 
 	@Override
 	public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-		switch(requestCode) {
-			case ALL_PERMISSIONS_RESULT:
-				ArrayList<String> permissionsRejected = new ArrayList<>();
-				for (String p : permissionsToRequest) {
-					if (!hasPermission(p))
-						permissionsRejected.add(p);
-				}
+		if (requestCode == ALL_PERMISSIONS_RESULT) {
+			ArrayList<String> permissionsRejected = new ArrayList<>();
+			for (String p : permissionsToRequest) {
+				if (!hasPermission(p))
+					permissionsRejected.add(p);
+			}
 
-				if (permissionsRejected.size() == 0)
-					break;
+			if (permissionsRejected.size() == 0)
+				return;
 
-				askForPermissions(permissionsRejected);
-
-				break;
-			default:
-				super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-				break;
+			askForPermissions(permissionsRejected);
+		} else {
+			super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 		}
 	}
 }

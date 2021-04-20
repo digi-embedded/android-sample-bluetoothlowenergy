@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014-2019, Digi International Inc. <support@digi.com>
+ * Copyright (c) 2014-2021, Digi International Inc. <support@digi.com>
  *
  * Permission to use, copy, modify, and/or distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
@@ -17,6 +17,7 @@
 package com.digi.android.sample.ble;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -54,46 +55,46 @@ public class BlePeripheralActivity extends Activity implements BLERSSIUpdateList
 	// Constants.
 	public static final String EXTRAS_DEVICE = "BLE_DEVICE";
 	public static final String EXTRAS_DEVICE_RSSI = "BLE_DEVICE_RSSI";
-	
+
 	private static final int CONNECT_TIMEOUT = 30000;
 
 	// Variables.
 	private ListType listType = ListType.GATT_SERVICES;
-	
+
 	private int bleDeviceRSSI;
 
 	private BluetoothDevice bleDevice;
-	
+
 	private BLEManager bleManager;
 
 	private BLEConnection connection;
-	
+
 	private TextView deviceNameText;
 	private TextView deviceAddressText;
 	private TextView deviceRssiText;
 	private TextView headerTitleText;
-	
+
 	private ImageView headerBackImage;
-	
+
 	private ImageView rssiImage;
-	
+
 	private Button connectButton;
 	private Button disconnectButton;
 
 	private ListView mainList;
 
 	private BleServicesListAdapter servicesListAdapter;
-	
+
 	private BleCharacteristicsListAdapter characteristicsListAdapter;
-	
+
 	private BleCharacteristicDetailsAdapter characteristicDetailsAdapter;
-	
+
 	private ProgressDialog progressDialog;
-	
+
 	private Timer connectTimer;
-	
+
 	private TimerTask connectTimerTask;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -104,15 +105,15 @@ public class BlePeripheralActivity extends Activity implements BLERSSIUpdateList
 
 		// Read intent values.
 		final Intent intent = getIntent();
-		bleDevice = intent.getExtras().getParcelable(EXTRAS_DEVICE);
+		bleDevice = Objects.requireNonNull(intent.getExtras()).getParcelable(EXTRAS_DEVICE);
 		bleDeviceRSSI =  intent.getIntExtra(EXTRAS_DEVICE_RSSI, 0);
 		updateRSSIValue(bleDeviceRSSI);
-		
+
 		// Update activity texts.
 		deviceNameText.setText(bleDevice.getName());
 		deviceAddressText.setText(bleDevice.getAddress());
 		headerTitleText.setText("");
-		
+
 		// Initialize Bluetooth Low Energy manager.
 		bleManager = BleSampleApplication.getInstance().getBLEManager();
 	}
@@ -161,7 +162,7 @@ public class BlePeripheralActivity extends Activity implements BLERSSIUpdateList
 			}
 		});
 	}
-	
+
 	// Click listener used by the list.
 	private final AdapterView.OnItemClickListener listClickListener = new AdapterView.OnItemClickListener() {
 		@Override
@@ -202,7 +203,7 @@ public class BlePeripheralActivity extends Activity implements BLERSSIUpdateList
 			}
 		}
 	};
-	
+
 	@Override
 	protected void onResume() {
 		super.onResume();
@@ -263,7 +264,7 @@ public class BlePeripheralActivity extends Activity implements BLERSSIUpdateList
 			hideProgressgDialog();
 		}
 	}
-	
+
 	/**
 	 * Disconnects from the remote BLE Device.
 	 */
@@ -278,7 +279,7 @@ public class BlePeripheralActivity extends Activity implements BLERSSIUpdateList
 		// Update UI.
 		updateUIDeviceDisconnected();
 	}
-	
+
 	/**
 	 * Completely closes the connection with the device.
 	 */
@@ -287,7 +288,7 @@ public class BlePeripheralActivity extends Activity implements BLERSSIUpdateList
 			return;
 		connection.close();
 	}
-	
+
 	/**
 	 * Performs service discovery in the remote device.
 	 */
@@ -302,7 +303,7 @@ public class BlePeripheralActivity extends Activity implements BLERSSIUpdateList
 			hideProgressgDialog();
 		}
 	}
-	
+
 	/**
 	 * Fills the BLE list of supported services. This action considers that
 	 * services have already been discovered in the remote device.
@@ -326,7 +327,7 @@ public class BlePeripheralActivity extends Activity implements BLERSSIUpdateList
 			}
 		});
 	}
-	
+
 	/**
 	 * Fills the BLE list with the given service characteristics.
 	 * 
@@ -353,7 +354,7 @@ public class BlePeripheralActivity extends Activity implements BLERSSIUpdateList
 			}
 		});
 	}
-	
+
 	/**
 	 * Fills the BLE list with the details of the given service characteristic.
 	 * 
@@ -375,7 +376,7 @@ public class BlePeripheralActivity extends Activity implements BLERSSIUpdateList
 			}
 		});
 	}
-	
+
 	/**
 	 * Updates the RSSI value with the given one.
 	 * 
@@ -392,7 +393,7 @@ public class BlePeripheralActivity extends Activity implements BLERSSIUpdateList
 			}
 		});
 	}
-	
+
 	/**
 	 * Switches the list type depending on the given value.
 	 * 
@@ -417,7 +418,7 @@ public class BlePeripheralActivity extends Activity implements BLERSSIUpdateList
 			break;
 		}
 	}
-	
+
 	/**
 	 * Shows the connecting progress dialog.
 	 */
@@ -430,7 +431,7 @@ public class BlePeripheralActivity extends Activity implements BLERSSIUpdateList
 			}
 		});
 	}
-	
+
 	/**
 	 * Shows the services discover progress dialog.
 	 */
@@ -443,7 +444,7 @@ public class BlePeripheralActivity extends Activity implements BLERSSIUpdateList
 			}
 		});
 	}
-	
+
 	/**
 	 * Shows a progress dialog with the given parameters.
 	 * 
@@ -457,7 +458,7 @@ public class BlePeripheralActivity extends Activity implements BLERSSIUpdateList
 		progressDialog.setMessage(message);
 		progressDialog.show();
 	}
-	
+
 	/**
 	 * Hides the progress dialog.
 	 */
@@ -471,7 +472,7 @@ public class BlePeripheralActivity extends Activity implements BLERSSIUpdateList
 			}
 		});
 	}
-	
+
 	/**
 	 * Shows the given error message as a toast.
 	 * 
@@ -485,7 +486,7 @@ public class BlePeripheralActivity extends Activity implements BLERSSIUpdateList
 			}
 		});
 	}
-	
+
 	/**
 	 * Updates the UI after device disconnects.
 	 */
@@ -538,7 +539,7 @@ public class BlePeripheralActivity extends Activity implements BLERSSIUpdateList
 		};
 		connectTimer.schedule(connectTimerTask, CONNECT_TIMEOUT);
 	}
-	
+
 	@Override
 	public void rssiValueRead(BluetoothDevice device, int rssi) {
 		updateRSSIValue(rssi);

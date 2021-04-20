@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014-2019, Digi International Inc. <support@digi.com>
+ * Copyright (c) 2014-2021, Digi International Inc. <support@digi.com>
  *
  * Permission to use, copy, modify, and/or distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
@@ -47,22 +47,22 @@ import android.widget.Toast;
 import android.widget.ToggleButton;
 
 public class BleCharacteristicDetailsAdapter extends BaseAdapter implements BLECharacteristicUpdateListener {
-	
+
 	// Variables.
 	private BluetoothGattCharacteristic bleCharacteristic = null;
 
 	private final LayoutInflater layoutInflater;
 
 	private BLEConnection connection = null;
-	
+
 	private Date lastUpdateTime;
 
 	private boolean notificationEnabled = false;
-	
+
 	private ProgressDialog progressDialog;
-	
+
 	private final Activity parentActivity;
-	
+
 	/**
 	 * Class constructor. Instantiates a new 
 	 * {@code BleCharacteristicDetailsAdapter} object with the given parameters.
@@ -133,7 +133,7 @@ public class BleCharacteristicDetailsAdapter extends BaseAdapter implements BLEC
 	public void setBLEConnection(BLEConnection connection) {
 		this.connection = connection;
 	}
-	
+
 	/**
 	 * Removes the BLE characteristic that is used in this adapter.
 	 */
@@ -176,7 +176,7 @@ public class BleCharacteristicDetailsAdapter extends BaseAdapter implements BLEC
 		TextView characteristicUpdatedDateText = convertView.findViewById(R.id.char_details_timestamp);
 		TextView characteristicValueStringText = convertView.findViewById(R.id.char_details_value_string);
 		TextView characteristicValueDecimalText = convertView.findViewById(R.id.char_details_value_decimal);
-		
+
 		// Input texts.
 		EditText characteristicHexValueInputText = convertView.findViewById(R.id.char_details_hex_value);
 		// Buttons.
@@ -261,7 +261,7 @@ public class BleCharacteristicDetailsAdapter extends BaseAdapter implements BLEC
 		// Return the modified view.
 		return convertView;
 	}
-	
+
 	/**
 	 * Handles what happens when the read button is pressed.
 	 */
@@ -288,7 +288,7 @@ public class BleCharacteristicDetailsAdapter extends BaseAdapter implements BLEC
 		};
 		readThread.start();
 	}
-	
+
 	/**
 	 * Handles what happens when the write button is pressed.
 	 * 
@@ -310,7 +310,7 @@ public class BleCharacteristicDetailsAdapter extends BaseAdapter implements BLEC
 		};
 		writeThread.start();
 	}
-	
+
 	/**
 	 * Handles what happens when the toggle notifications button is pressed.
 	 * 
@@ -336,7 +336,7 @@ public class BleCharacteristicDetailsAdapter extends BaseAdapter implements BLEC
 		};
 		writeThread.start();
 	}
-	
+
 	/**
 	 * Shows the reading progress dialog.
 	 */
@@ -348,7 +348,7 @@ public class BleCharacteristicDetailsAdapter extends BaseAdapter implements BLEC
 			}
 		});
 	}
-	
+
 	/**
 	 * Shows the writing progress dialog.
 	 */
@@ -360,7 +360,7 @@ public class BleCharacteristicDetailsAdapter extends BaseAdapter implements BLEC
 			}
 		});
 	}
-	
+
 	/**
 	 * Shows the notifications progress dialog.
 	 */
@@ -372,7 +372,7 @@ public class BleCharacteristicDetailsAdapter extends BaseAdapter implements BLEC
 			}
 		});
 	}
-	
+
 	/**
 	 * Hides the progress dialog.
 	 */
@@ -384,7 +384,7 @@ public class BleCharacteristicDetailsAdapter extends BaseAdapter implements BLEC
 			}
 		});
 	}
-	
+
 	/**
 	 * Shows the given error message as a toast.
 	 * 
@@ -398,7 +398,7 @@ public class BleCharacteristicDetailsAdapter extends BaseAdapter implements BLEC
 			}
 		});
 	}
-	
+
 	/**
 	 * Shows a progress dialog with the given parameters.
 	 * 

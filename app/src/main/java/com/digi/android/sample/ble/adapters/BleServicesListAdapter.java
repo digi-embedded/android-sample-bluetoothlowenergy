@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014-2016, Digi International Inc. <support@digi.com>
+ * Copyright (c) 2014-2021, Digi International Inc. <support@digi.com>
  *
  * Permission to use, copy, modify, and/or distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
@@ -32,12 +32,12 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 public class BleServicesListAdapter extends BaseAdapter {
-	
+
 	// Variables.
 	private final ArrayList<BluetoothGattService> bleServices;
 	
 	private final LayoutInflater layoutInflater;
-	
+
 	/**
 	 * Class constructor. Instantiates a new {@code BleServicesListAdapter}
 	 * object with the given parameters.
@@ -102,7 +102,7 @@ public class BleServicesListAdapter extends BaseAdapter {
 		if (!bleServices.contains(service))
 			bleServices.add(service);
 	}
-	
+
 	/**
 	 * Retrieves the BLE Service with at given position from the list.
 	 * 

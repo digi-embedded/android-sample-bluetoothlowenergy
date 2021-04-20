@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014-2016, Digi International Inc. <support@digi.com>
+ * Copyright (c) 2014-2021, Digi International Inc. <support@digi.com>
  *
  * Permission to use, copy, modify, and/or distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
@@ -35,7 +35,7 @@ public class BleDeviceListAdapter extends BaseAdapter {
 
 	// Variables.
 	private final ArrayList<BluetoothDevice> bleDevices;
-	
+
 	private final ArrayList<Integer> bleDevicesRssi;
 
 	private final LayoutInflater layoutInflater;

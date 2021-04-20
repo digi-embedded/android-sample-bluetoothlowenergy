@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014-2019, Digi International Inc. <support@digi.com>
+ * Copyright (c) 2014-2021 , Digi International Inc. <support@digi.com>
  *
  * Permission to use, copy, modify, and/or distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
@@ -47,7 +47,7 @@ public class BleSampleApplication extends Application {
 		// Initialize managers.
 		bleManager = new BLEManager(this);
 	}
-	
+
 	/**
 	 * Retrieves the application instance.
 	 * 
@@ -56,7 +56,7 @@ public class BleSampleApplication extends Application {
 	public static BleSampleApplication getInstance() {
 		return instance;
 	}
-	
+
 	/**
 	 * Returns the Bluetooth Low Energy manager.
 	 * 
@@ -65,7 +65,7 @@ public class BleSampleApplication extends Application {
 	public BLEManager getBLEManager() {
 		return bleManager;
 	}
-	
+
 	/**
 	 * Retrieves the image drawable corresponding to the given RSSI value.
 	 * 
